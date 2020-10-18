@@ -68,8 +68,11 @@ const getCasesByDateByFips = (inputString) => {
       let fips = matrix[j][2];
 
       // Cases per 100k
-      cases = cases / popByFips[fips] * 100000;
-      byFips[fips] = cases;
+      let result = {
+        cases: cases,
+        perThousand: cases / popByFips[fips] * 1000,
+      };
+      byFips[fips] = result;
     }
     byDate[date] = byFips;
     startDay.add(1, 'day');
