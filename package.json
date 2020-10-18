@@ -13,5 +13,11 @@
     "visualizations"
   ],
   "author": "Ben Racine",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "d3": "^6.2.0",
+    "lodash": "^4.17.20",
+    "rambda": "^6.2.0",
+    "underscore": "^1.11.0"
+  }
 }
