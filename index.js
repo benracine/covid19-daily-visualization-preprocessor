@@ -12,6 +12,8 @@ const numDays = 14;  // todo: should not be hardcoded
 program
   .option('-f, --filename <type>', 'input file to consume')
 
+let popByFips;
+
 const csvParsePop = (d) => {
   const county = Object.values(d)[0];
   return {
@@ -61,8 +63,13 @@ const getCasesByDateByFips = (inputString) => {
   for (i = 0; i < numDays; i++) {
     let date = startDay.format('YYYY-MM-DD');
     let byFips = {};
-    for (j = 0; j < matrix.length; j++) {
-      byFips[matrix[3]] = matrix[offset + i];
+    for (j = 1; j < matrix.length; j++) {
+      let cases = parseInt(matrix[j][offset + i]);
+      let fips = matrix[j][2];
+      byFips[fips] = cases;
+
+      // Cases per 100k
+      cases = cases / popByFips[fips] * 100000;
     }
     byDate[date] = byFips;
     startDay.add(1, 'day');
@@ -73,10 +80,9 @@ const getCasesByDateByFips = (inputString) => {
 
 const process = async (filename) => {
   const inputString = await readFileAsync(filename, 'utf8');
-  // const popByFips = getPopByFips(inputString);
-  // const nameByFips = getNameByFips(inputString);
+  popByFips = getPopByFips(inputString);
+  const nameByFips = getNameByFips(inputString);
   const casesByDateByFips = getCasesByDateByFips(inputString);
-  put(casesByDateByFips);
 }
 
 if (require.main === module) {
