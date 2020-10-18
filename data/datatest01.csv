@@ -1,4 +1,4 @@
-﻿Countyname,ST_Name,FIPS,POP_ESTIMA,Day_1,Day_2,Day_3,Day_4,Day_5,Day_6,Day_7,Day_8,Day_9,Day_10,Day_11,Day_12,Day_13,Day_14
+﻿county,state,FIPS,POP_ESTIMA,Day_1,Day_2,Day_3,Day_4,Day_5,Day_6,Day_7,Day_8,Day_9,Day_10,Day_11,Day_12,Day_13,Day_14
 Autauga,Alabama,01001,55601,6,7,16,19,11,13,8,3,10,13,7,7,4,2
 Baldwin,Alabama,01003,218022,17,13,18,31,7,18,31,12,25,24,27,357,34,18
 Barbour,Alabama,01005,24881,2,0,3,12,0,4,2,0,0,19,4,2,10,0

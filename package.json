@@ -18,6 +18,7 @@
     "commander": "^6.1.0",
     "d3": "^6.2.0",
     "lodash": "^4.17.20",
+    "moment": "^2.29.1",
     "promisify": "0.0.3",
     "rambda": "^6.2.0",
     "underscore": "^1.11.0"
