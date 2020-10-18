@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run test",
-    "process": "node ./index.js"
+    "process": "node ./index.js --filename data/dataset01.csv"
   },
   "keywords": [
     "covid-19",
