@@ -8,12 +8,11 @@ const readFileAsync = promisify(fs.readFile);
 program
   .option('-f, --filename <type>', 'input file to consume')
 
-
-
 const process = async (filename) => {
   const inputString = await readFileAsync(filename, 'utf8');
   const inputCSV = d3.csvParse(filename);
   console.log(inputCSV);
+  console.log(d3.rollup);
 }
 
 if (require.main === module) {
