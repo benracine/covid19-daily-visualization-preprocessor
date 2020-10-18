@@ -3,8 +3,8 @@ const fs = require('fs');
 const { program } = require('commander');
 const { promisify } = require('util');
 const readFileAsync = promisify(fs.readFile);
+const writeFileAsync = promisify(fs.writeFile);
 const moment = require('moment');
-const { start } = require('repl');
 const put = console.log;
 const numDays = 14;  // todo: should not be hardcoded
 
@@ -66,10 +66,10 @@ const getCasesByDateByFips = (inputString) => {
     for (j = 1; j < matrix.length; j++) {
       let cases = parseInt(matrix[j][offset + i]);
       let fips = matrix[j][2];
-      byFips[fips] = cases;
 
       // Cases per 100k
       cases = cases / popByFips[fips] * 100000;
+      byFips[fips] = cases;
     }
     byDate[date] = byFips;
     startDay.add(1, 'day');
@@ -83,6 +83,11 @@ const process = async (filename) => {
   popByFips = getPopByFips(inputString);
   const nameByFips = getNameByFips(inputString);
   const casesByDateByFips = getCasesByDateByFips(inputString);
+
+  fs.writeFile('./output.json', JSON.stringify(casesByDateByFips, null, 2), () => {
+    console.log('done');
+  });
+  // put(casesByDateByFips['2020-03-15']['01003']);
 }
 
 if (require.main === module) {
