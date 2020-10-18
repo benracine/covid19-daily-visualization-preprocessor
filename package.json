@@ -4,7 +4,8 @@
   "description": "We want to see the spatial migration of Covid 19 variables over time.",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "npm run test",
+    "process": "node ./index.js"
   },
   "keywords": [
     "covid-19",
