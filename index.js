@@ -8,11 +8,27 @@ const readFileAsync = promisify(fs.readFile);
 program
   .option('-f, --filename <type>', 'input file to consume')
 
+const csvParsePop = (d) => {
+  return {
+    fips: d.FIPS,
+    pop: d.POP_ESTIMA,
+  }
+};
+
+const getPopByFips = (inputString) => {
+  const popKeyValues = d3.csvParse(inputString, csvParsePop);
+  let popByFips = {};
+  popKeyValues.forEach(row => {
+    popByFips[row.fips] = parseInt(row.pop);
+  });
+  return popByFips;
+}
+
 const process = async (filename) => {
   const inputString = await readFileAsync(filename, 'utf8');
-  const inputCSV = d3.csvParse(filename);
-  console.log(inputCSV);
-  console.log(d3.rollup);
+
+  const popByFips = getPopByFips(inputString);
+  console.log(popByFips);
 }
 
 if (require.main === module) {
