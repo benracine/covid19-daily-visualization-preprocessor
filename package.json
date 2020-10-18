@@ -1,0 +1,16 @@
+{
+  "name": "covid19-daily-visualization-preprocessor",
+  "version": "0.0.1",
+  "description": "We want to see the spatial migration of Covid 19 variables over time.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "keywords": [
+    "covid-19",
+    "d3.js",
+    "visualizations"
+  ],
+  "author": "Ben Racine",
+  "license": "MIT"
+}
